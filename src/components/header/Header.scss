@@ -1,0 +1,29 @@
+@import '../../colors.scss';
+
+header {
+  width: 100vw;
+  background-color: $dark;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem 0;
+
+  a {
+    all: unset;
+    padding: 0.8rem;
+    background-color: $light;
+    width: 150px;
+    text-align: center;
+    color: $dark;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: $solid;
+      color: $lighter;
+    }
+  }
+  .active {
+    background-color: $solid;
+    color: $lighter;
+  }
+}
