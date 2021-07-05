@@ -1,24 +1,39 @@
-import { NavLink } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import { NavLink, useHistory } from 'react-router-dom'
 import './Header.scss'
 
-const Header = () => {
-  
+const Header = ({path}) => {
+  const popular = React.createRef()
+  const history = useHistory()
+
+  if (path === '/') {
+    history.push('/popular')
+  }
+
+  useEffect(() => {
+    popular.current.classList.add('active')
+  })
 
   const addActiveClass = (e) => {
+    
+    if (popular.current.classList.contains('active')) {
+      popular.current.classList.remove('active')
+    }
+
     let target = e && e.target
     target.classList.toggle('active')
   }
 
   return (
     <header>
-      <NavLink to='/popular' onClick={addActiveClass} >
-        <span>Popular movies</span> 
+      <NavLink to='/popular' onClick={addActiveClass} ref={popular}>
+        Popular movies
       </NavLink>
-      <NavLink to='upcoming' onClick={addActiveClass} >
-        <span>Upcoming movies</span> 
+      <NavLink to='/upcoming' onClick={addActiveClass} >
+        Upcoming movies
       </NavLink>
       <NavLink to='/top_rated' onClick={addActiveClass} >
-        <span>Top-rated movies</span> 
+        Top-rated movies
       </NavLink>
     </header>
   )

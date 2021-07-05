@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header path={window.location.pathname}/>
         <Switch>
           <Route path={'/:movieType'} component={Movies} exact />
         </Switch>
